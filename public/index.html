@@ -1,0 +1,63 @@
+<html ng-app="scotchTodo">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1"><!-- Optimize mobile viewport -->
+	<title>Shift App</title>
+	<link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css"><!-- load bootstrap -->
+	<li	nk rel="stylesheet" href="libs/allmighty-autocomplete/style/autocomplete.css">
+	<style>
+		html 					{ overflow-y:scroll; }
+		body 					{ padding-top:50px; }
+		#todo-list 				{ margin-bottom:30px; }
+		#todo-form 	 			{ margin-bottom:50px; }
+	</style>
+
+	<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.16/angular.min.js"></script><!-- load angular -->
+	<script src="core.js"></script>
+	<script type="text/javascript" src="libs/allmighty-autocomplete/script/autocomplete.js"></script>
+	<script type="text/javascript" src="libs/allmighty-autocomplete/script/app.js"></script>
+</head>
+<body ng-controller="mainController">
+	<div class="container">
+		<div class=" text-center">
+			<h3>Select Country</h3>
+		</div>
+
+		<div id="todo-form" class="row">
+			<div class="col-sm-8 col-sm-offset-2 text-center">
+				<form>
+					<div class="form-group">
+						 <select name="repeatSelect" ng-disabled="countries == null" id="repeatSelect" ng-model="data.model" ng-change="getData(data.model)" class="form-control input-lg text-center">
+							 <option ng-repeat="option in countries.results"  value="{{option.isocode}}">{{option.country}}</option>
+						 </select>
+					</div>
+					<!-- <button type="submit" class="btn btn-primary btn-lg" ng-click="createTodo()">Get Data</button> -->
+				</form>
+
+				<table class="table"  ng-show="data.model != null">
+					<tbody>
+							<tr>
+								<th>Flag</th>
+								<td> <img src="{{ countryData.flag }}" border=5 height=250 width=400></td>
+							</tr>
+							<tr>
+								<th>Country</th>
+								<td>{{ countryData.name }}</td>
+							</tr>
+							<tr>
+								<th>Capital</th>
+									<td>{{ countryData.capital }}</td>
+							</tr>
+						<tr>
+								<th>Currency</th>
+								<td>{{ countryData.currencies[0].name }}</td>
+							</tr>
+					</tbody>
+					</table>
+
+			</div>
+		</div>
+	</div>
+
+</body>
+</html>
